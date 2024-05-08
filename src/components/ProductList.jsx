@@ -1,6 +1,6 @@
 import React from 'react'
-import Nav from "./components/Nav"
-import Products from "./components/Products"
+import Nav from "./Nav"
+import Products from "./Products"
 const ProductList = () => {
     return (
         <div>

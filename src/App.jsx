@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom.min"
-import ProductList from "./ProductList"
-import PageNotFount from "./PageNotFount"
+import ProductList from "./components/ProductList"
+import PageNotFount from "./components/PageNotFount"
 import Product from "./components/Product"
 
 function App() {
