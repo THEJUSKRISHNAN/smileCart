@@ -5,19 +5,22 @@ import { CiSearch } from "react-icons/ci";
 import AllProductsApi from '../../src/apis/showAllProduts'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import Nav from './Nav'
+import useDebounce from '../hooks/useDebounce';
 
 
 const Products = () => {
     const [record, setRecord] = useState([])
     const [searchKey, setSearchKey] = useState("");
 
+    const debouncedSearchKey = useDebounce(searchKey);
+
     useEffect(() => {
         fetchProducts();
-    }, [searchKey]);
+    }, [debouncedSearchKey]);
 
     const fetchProducts = async () => {
         try {
-            const response = await AllProductsApi.showAllProducts(searchKey);
+            const response = await AllProductsApi.showAllProducts(debouncedSearchKey);
             setRecord(response.products)
         } catch (error) {
             console.log("An error occurred:", error);
