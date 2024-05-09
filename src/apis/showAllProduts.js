@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const showAllProducts = () =>
-  axios.get("https://smile-cart-backend-staging.neetodeployapp.com/products");
+axios.get("products");
+
   const AllProductsApi = { showAllProducts };
   export default AllProductsApi;

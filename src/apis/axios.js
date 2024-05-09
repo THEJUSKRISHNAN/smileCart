@@ -5,11 +5,18 @@ const responseInterceptors = () => {
 };
 export default responseInterceptors;
 
-// export function initializeAxios() {
-//     axios.defaults.baseURL =
-//       "https://smile-cart-backend-staging.neetodeployapp.com/";
-//     setHttpHeaders();
-//     responseInterceptors();
-//   }
+const setHttpHeaders = () => {
+    axios.defaults.headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
+  };
+
+export function initializeAxios() {
+    axios.defaults.baseURL =
+      "https://smile-cart-backend-staging.neetodeployapp.com/";
+    setHttpHeaders();
+    responseInterceptors();
+  }
 
 

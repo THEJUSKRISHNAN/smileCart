@@ -15,7 +15,6 @@ function App() {
         <Route component={ProductList} path="/products" />
         <Redirect exact from="/" to="/products" />
         <Route component={Product} path='/product/:slug' />
-
         <Route component={PageNotFount} path="*" />
       </Switch>
 

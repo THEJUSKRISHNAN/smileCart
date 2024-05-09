@@ -21,7 +21,6 @@ const Products = () => {
 
     };
 
-    //   onClick={<ProductPage slugValue={item.slug}/>}
     return (
         <section className='grid grid-cols-4 mx-7 mb-7'>
             {record.map((item) => {

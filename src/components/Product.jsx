@@ -21,7 +21,7 @@ const Product = () => {
             console.log(error)
         }
     }
-    console.log(product)
+
     const {
         name,
         description,

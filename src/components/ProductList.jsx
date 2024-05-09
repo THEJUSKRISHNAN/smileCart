@@ -6,8 +6,6 @@ const ProductList = () => {
         <div>
             <Nav />
             <Products />
-
-
         </div>
     )
 }

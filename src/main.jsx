@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min.js'
-import responseInterceptors from './apis/axios.js'
+import { initializeAxios } from './apis/axios.js'
 
-responseInterceptors();
+initializeAxios();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
