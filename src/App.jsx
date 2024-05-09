@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom.min"
-import ProductList from "./components/ProductList"
 import PageNotFount from "./components/PageNotFount"
 import Product from "./components/Product"
+import Products from "./components/Products"
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
     <>
 
       <Switch>
-        <Route component={ProductList} path="/products" />
+        <Route component={Products} path="/products" />
         <Redirect exact from="/" to="/products" />
         <Route component={Product} path='/product/:slug' />
         <Route component={PageNotFount} path="*" />
