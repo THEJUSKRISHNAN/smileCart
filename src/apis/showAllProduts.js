@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const showAllProducts = () =>
-axios.get("products?page=1&page_size=50");
+const showAllProducts = (params) =>
+axios.get(`products?search_term=${params}`);
 
   const AllProductsApi = { showAllProducts };
   export default AllProductsApi;
