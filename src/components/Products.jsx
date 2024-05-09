@@ -13,7 +13,7 @@ const Products = () => {
     const fetchProducts = async () => {
         try {
             const response = await AllProductsApi.showAllProducts();
-            setRecord(response.data.products)
+            setRecord(response.products)
         } catch (error) {
             console.log("An error occurred:", error);
         }

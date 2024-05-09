@@ -16,7 +16,7 @@ const Product = () => {
     const fetchProduct = async () => {
         try {
             const response = await productsApi.fetch(slug)
-            setProduct(response.data);
+            setProduct(response);
         } catch (error) {
             console.log(error)
         }
