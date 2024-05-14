@@ -6,6 +6,7 @@ import AllProductsApi from '../../src/apis/showAllProduts'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import Nav from './Nav'
 import useDebounce from '../hooks/useDebounce';
+import CartIcon from './CartIcon';
 
 
 const Products = () => {
@@ -38,10 +39,11 @@ const Products = () => {
                     <CiSearch className='absolute top-2 left-1' />
                 </div>
 
-                <div className='relative flex pl-7'>
+                {/* <div className='relative flex pl-7'>
                     <FaCartShopping className='text-4xl' />
                     <span className='absolute bottom-8 right-0 font-bold '>0</span>
-                </div>
+                </div> */}
+                <CartIcon/>
             </div>} />
 
             <section className='grid grid-cols-4 mx-7 mb-7'>

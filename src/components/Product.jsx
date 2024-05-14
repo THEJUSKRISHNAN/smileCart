@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useState ,useEffect} from 'react';
 import productsApi from '../apis/productsApi';
 import Nav from './Nav';
+import CartIcon from './CartIcon';
 
 const Product = () => {
     const { slug } = useParams();
@@ -36,7 +37,7 @@ const Product = () => {
 
     return (
         <>
-        <Nav home={name} isAddCart={false} isBack={true} />
+        <Nav home={name} isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
         <div className='flex mt-14 mx-[10rem]'>
             <div >
                 <img src={imageUrl} alt="image" className='w-[30rem] h-[30rem]'/>
