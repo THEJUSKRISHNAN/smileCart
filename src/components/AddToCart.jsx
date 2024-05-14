@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
-const AddToCart = () => {
+const AddToCart = ({isInCart,toggleIsInCart}) => {
 
-    const [isInCart, setIsInCart] = useState(false)
+    // const [isInCart, setIsInCart] = useState(false)
 
     const handleClick = (e) => {
         e.stopPropagation();
         e.preventDefault();
-        setIsInCart(prevValue => !prevValue);
+        // setIsInCart(prevValue => !prevValue);
+        toggleIsInCart();
     };
 
     return (
