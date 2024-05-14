@@ -7,13 +7,12 @@ import Nav from './Nav'
 import useDebounce from '../hooks/useDebounce';
 import CartIcon from './CartIcon';
 import AddToCart from './AddToCart';
-import { without } from 'ramda';
+
 
 
 const Products = () => {
     const [record, setRecord] = useState([])
     const [searchKey, setSearchKey] = useState("");
-    const [cartItems, setCartItems] = useState([]);
 
 
     const debouncedSearchKey = useDebounce(searchKey);
@@ -31,13 +30,6 @@ const Products = () => {
         }
     };
 
-    const toggleIsInCart = slug =>
-        setCartItems(prevCartItems =>
-          prevCartItems.includes(slug)
-            ? without([slug], cartItems)
-            : [slug, ...cartItems]
-        );
-
     return (
         <>
             <Nav actionBlock={<div className='flex'>
@@ -48,7 +40,7 @@ const Products = () => {
                       onChange={event => setSearchKey(event.target.value)} />
                     <CiSearch className='absolute top-2 left-1' />
                 </div>
-                <CartIcon cartItemsCount={cartItems.length}/>
+                <CartIcon/>
             </div>} />
 
             <section className='grid grid-cols-4 mx-7 mb-7'>
@@ -60,7 +52,7 @@ const Products = () => {
                             <p className="text-center pt-2 font-semibold">MRP:{item.mrp}</p>
                             <p className="text-center pt-2 font-semibold">Offer Price:{item.offer_price}</p>
                             <p className="text-center pt-2 font-semibold">Available Quantity:{item.available_quantity}</p>
-                            <AddToCart isInCart={cartItems.includes(item.slug)} toggleIsInCart={() => toggleIsInCart(item.slug)}/>
+                            <AddToCart slug={item.slug}/>
                         </div>
                     </Link>
                 })}
