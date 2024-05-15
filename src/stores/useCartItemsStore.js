@@ -1,7 +1,8 @@
 import { without } from "ramda";
-import { create } from "zustand";
+import { createWithEqualityFn } from 'zustand/traditional'
 
-const useCartItemsStore = create(set => ({
+
+  const useCartItemsStore = createWithEqualityFn(set => ({
   cartItems: [],
   toggleIsInCart: slug =>
     set(({ cartItems }) => {
