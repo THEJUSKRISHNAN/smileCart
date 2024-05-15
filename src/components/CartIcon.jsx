@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { FaCartShopping } from "react-icons/fa6";
-import CartItemsContext from '../contexts/CartItemsContext';
+import useCartItemsStore from '../stores/useCartItemsStore';
 
 const CartIcon = () => {
-  const [cartItems]=useContext(CartItemsContext)
-  const cartItemsCount = cartItems.length;
+
+  const cartItemsCount = useCartItemsStore(store => store.cartItems.length);
+ 
   return (
     <div>
       <div className='relative flex pl-7'>
