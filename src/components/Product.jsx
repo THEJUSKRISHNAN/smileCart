@@ -30,6 +30,7 @@ const Product = () => {
         mrp,
         offer_price: offerPrice,
         image_url: imageUrl,
+        available_quantity: availableQuantity,
       } = product;
      const totalDiscount = mrp-offerPrice;
      const discountPercentage=((totalDiscount/mrp)*100).toFixed(1);
@@ -50,7 +51,7 @@ const Product = () => {
                 <p className='mt-3 text-xl font-semibold'>OFFER PRICE: {offerPrice}$</p>
                 <p className='mt-3 text-xl font-semibold text-green-600'>{discountPercentage}% off</p>
                 <div className='flex'>
-                    <AddToCart slug={slug}/>
+                    <AddToCart slug={slug} availableQuantity={availableQuantity} />
                     <button className='pt-2 font-semibold bg-blue-700 text-white px-3 py-2 rounded-lg align-middle my-3 ml-[3rem]'>buy now</button>
                 </div>
             </div>

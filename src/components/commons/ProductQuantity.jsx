@@ -4,12 +4,12 @@ import { shallow } from "zustand/shallow";
 
 
 
-const ProductQuantity = ({ slug }) => {
+const ProductQuantity = ({ slug,availableQuantity }) => {
     const [selectedQuantity, setSelectedQuantity] = useCartItemsStore(
         paths([["cartItems", slug], ["setSelectedQuantity"]]),
         shallow
     );
-
+    const isNotValidQuantity = selectedQuantity >= availableQuantity;
     const preventNavigation = e => {
         e.stopPropagation();
         e.preventDefault();
@@ -23,7 +23,7 @@ const ProductQuantity = ({ slug }) => {
                 setSelectedQuantity(slug, selectedQuantity - 1);
             }}>-</button>
             {selectedQuantity}
-            <button className="font-bold pr-1" onClick={e => {
+            <button className="font-bold pr-1" disabled={isNotValidQuantity} onClick={e => {
                 preventNavigation(e);
                 setSelectedQuantity(slug, selectedQuantity + 1);
             }}>+</button>

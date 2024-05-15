@@ -5,7 +5,7 @@ import { isNil, paths } from 'ramda';
 import ProductQuantity from "./commons/ProductQuantity"
 
 
-const AddToCart = ({slug}) => {
+const AddToCart = ({slug,availableQuantity}) => {
     const [selectedQuantity, setSelectedQuantity] = useCartItemsStore(
         paths([["cartItems", slug], ["setSelectedQuantity"]]),
         shallow
@@ -20,7 +20,7 @@ const AddToCart = ({slug}) => {
 
     return (
         <button className=" pt-2 font-semibold bg-blue-700 text-white px-3 py-2 rounded-lg align-middle my-3 ml-[3rem]" onClick={handleClick}>
-            {isNil(selectedQuantity) ? "Add to cart" : <ProductQuantity slug={slug} /> }
+            {availableQuantity>0 ? isNil(selectedQuantity) ? "Add to cart" : <ProductQuantity slug={slug} availableQuantity={availableQuantity}/> : "out of stock"}
         </button>
     )
 }

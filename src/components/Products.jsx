@@ -52,7 +52,7 @@ const Products = () => {
                             <p className="text-center pt-2 font-semibold">MRP:{item.mrp}</p>
                             <p className="text-center pt-2 font-semibold">Offer Price:{item.offer_price}</p>
                             <p className="text-center pt-2 font-semibold">Available Quantity:{item.available_quantity}</p>
-                            <AddToCart slug={item.slug}/>
+                            <AddToCart slug={item.slug} availableQuantity={item.available_quantity}/>
                         </div>
                     </Link>
                 })}
