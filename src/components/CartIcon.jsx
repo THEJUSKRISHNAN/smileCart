@@ -1,10 +1,13 @@
 import React from 'react'
 import { FaCartShopping } from "react-icons/fa6";
 import useCartItemsStore from '../stores/useCartItemsStore';
+import { keys } from 'ramda';
 
 const CartIcon = () => {
 
-  const cartItemsCount = useCartItemsStore(store => store.cartItems.length);
+  const cartItemsCount = useCartItemsStore(
+    store => keys(store.cartItems).length
+  );
  
   return (
     <div>

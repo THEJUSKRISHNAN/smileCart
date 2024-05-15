@@ -1,16 +1,15 @@
-import { without } from "ramda";
-import { createWithEqualityFn } from 'zustand/traditional'
+import { assoc, dissoc } from "ramda";
+import { create } from "zustand";
 
-
-  const useCartItemsStore = createWithEqualityFn(set => ({
-  cartItems: [],
-  toggleIsInCart: slug =>
+const useCartItemsStore = create(set => ({
+  cartItems: {},
+  setSelectedQuantity: (slug, quantity) =>
     set(({ cartItems }) => {
-      if (cartItems.includes(slug)) {
-        return { cartItems: without([slug], cartItems) };
+      if (quantity <= 0) {
+        return { cartItems: dissoc(slug, cartItems) };
       }
 
-      return { cartItems: [slug, ...cartItems] };
+      return { cartItems: assoc(slug, quantity, cartItems) };
     }),
 }));
 
