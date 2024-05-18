@@ -1,4 +1,4 @@
-import { assoc, dissoc } from "ramda";
+import { assoc, dissoc, evolve } from "ramda";
 import { create } from "zustand";
 
 const useCartItemsStore = create(set => ({
@@ -11,6 +11,7 @@ const useCartItemsStore = create(set => ({
 
       return { cartItems: assoc(slug, quantity, cartItems) };
     }),
+    removeCartItem: slug => set(evolve({ cartItems: dissoc(slug) })),
 }));
 
 export default useCartItemsStore;

@@ -7,10 +7,14 @@ import { keys,isEmpty } from 'ramda'
 import useCartItemsStore from '../../stores/useCartItemsStore'
 import { shallow } from 'zustand/shallow'
 import ProductCard from './ProductCard'
+import { cartTotalOf } from '../utils'
+import { MRP, OFFER_PRICE } from '../constants'
+import PriceCard from './PriceCard'
 
 const Cart = () => {
     const [products, setProducts] = useState([]);
     const slugs = useCartItemsStore(store => keys(store.cartItems), shallow);
+    const { cartItems, setSelectedQuantity } = useCartItemsStore();
 
   const fetchCartProducts = async () => {
     try {
@@ -27,7 +31,7 @@ const Cart = () => {
 
   useEffect(() => {
     fetchCartProducts();
-  }, []);
+  }, [cartItems]);
 
   if (isEmpty(products)) {
     return (
@@ -39,10 +43,15 @@ const Cart = () => {
       </>
     );
   }
+
+  const totalMrp = cartTotalOf(products,MRP);
+  const totalOfferPrice = cartTotalOf(products,OFFER_PRICE);
   
   return (
-    <div>
-      <Nav  home='My cart' isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
+    <>
+    <Nav  home='My cart' isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
+    <div className='flex justify-evenly'>
+      
       <div className='ml-10'>
       {products.map(product => (
             <ProductCard slug={product.slug}
@@ -50,9 +59,10 @@ const Cart = () => {
           ))}
       </div>
     
-    
+          <PriceCard {...{ totalMrp, totalOfferPrice }}/>
     
     </div>
+    </>
   )
 }
 
