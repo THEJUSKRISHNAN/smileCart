@@ -5,7 +5,7 @@ import { isNil, paths } from 'ramda';
 import ProductQuantity from "./commons/ProductQuantity"
 
 
-const AddToCart = ({slug,availableQuantity}) => {
+const AddToCartBtn = ({slug,availableQuantity}) => {
     const [selectedQuantity, setSelectedQuantity] = useCartItemsStore(
         paths([["cartItems", slug], ["setSelectedQuantity"]]),
         shallow
@@ -25,4 +25,4 @@ const AddToCart = ({slug,availableQuantity}) => {
     )
 }
 
-export default AddToCart
+export default AddToCartBtn

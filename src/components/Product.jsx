@@ -4,7 +4,8 @@ import { useState ,useEffect} from 'react';
 import productsApi from '../apis/productsApi';
 import Nav from './Nav';
 import CartIcon from './CartIcon';
-import AddToCart from './AddToCart';
+import AddToCartBtn from './AddToCartBtn';
+
 
 const Product = () => {
     const { slug } = useParams();
@@ -51,7 +52,7 @@ const Product = () => {
                 <p className='mt-3 text-xl font-semibold'>OFFER PRICE: {offerPrice}$</p>
                 <p className='mt-3 text-xl font-semibold text-green-600'>{discountPercentage}% off</p>
                 <div className='flex'>
-                    <AddToCart slug={slug} availableQuantity={availableQuantity} />
+                    <AddToCartBtn slug={slug} availableQuantity={availableQuantity} />
                     <button className='pt-2 font-semibold bg-blue-700 text-white px-3 py-2 rounded-lg align-middle my-3 ml-[3rem]'>buy now</button>
                 </div>
             </div>
