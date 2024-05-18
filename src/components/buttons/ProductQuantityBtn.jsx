@@ -4,7 +4,7 @@ import { shallow } from "zustand/shallow";
 
 
 
-const ProductQuantity = ({ slug,availableQuantity }) => {
+const ProductQuantityBtn = ({ slug,availableQuantity }) => {
     const [selectedQuantity, setSelectedQuantity] = useCartItemsStore(
         paths([["cartItems", slug], ["setSelectedQuantity"]]),
         shallow
@@ -31,4 +31,4 @@ const ProductQuantity = ({ slug,availableQuantity }) => {
     )
 }
 
-export default ProductQuantity
+export default ProductQuantityBtn

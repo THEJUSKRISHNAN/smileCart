@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { useState ,useEffect} from 'react';
 import productsApi from '../apis/productsApi';
 import Nav from './Nav';
-import CartIcon from './CartIcon';
-import AddToCartBtn from './AddToCartBtn';
+import AddToCartBtn from './buttons/AddToCartBtn';
+import CartIcon from './icons/CartIcon';
+
 
 
 const Product = () => {

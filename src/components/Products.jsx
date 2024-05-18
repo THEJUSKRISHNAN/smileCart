@@ -5,8 +5,8 @@ import AllProductsApi from '../../src/apis/showAllProduts'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import Nav from './Nav'
 import useDebounce from '../hooks/useDebounce';
-import CartIcon from './CartIcon';
-import AddToCartBtn from './AddToCartBtn';
+import AddToCartBtn from './buttons/AddToCartBtn';
+import CartIcon from './icons/CartIcon';
 
 
 

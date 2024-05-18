@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaCartShopping } from "react-icons/fa6";
-import useCartItemsStore from '../stores/useCartItemsStore';
+import useCartItemsStore from '../../stores/useCartItemsStore';
 import { keys } from 'ramda';
 
 const CartIcon = () => {
