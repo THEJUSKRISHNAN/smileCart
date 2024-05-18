@@ -41,7 +41,7 @@ const Products = () => {
                       onChange={event => setSearchKey(event.target.value)} />
                     <CiSearch className='absolute top-2 left-1' />
                 </div>
-                <CartIcon/>
+                <Link to='/cart'><CartIcon/></Link>
             </div>} />
 
             <section className='grid grid-cols-4 mx-7 mb-7'>

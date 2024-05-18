@@ -17,7 +17,7 @@ const ProductQuantityBtn = ({ slug,availableQuantity }) => {
 
 
     return (
-        <div className="font-bold flex w-[6rem] justify-between  text-xl">
+        <div className="font-bold flex w-[6rem] justify-between  text-xl bg-blue-700 text-white rounded-md">
             <button className="font-bold pl-1" onClick={e => {
                 preventNavigation(e);
                 setSelectedQuantity(slug, selectedQuantity - 1);

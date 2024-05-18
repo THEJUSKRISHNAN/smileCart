@@ -5,6 +5,7 @@ import productsApi from '../apis/productsApi';
 import Nav from './Nav';
 import AddToCartBtn from './buttons/AddToCartBtn';
 import CartIcon from './icons/CartIcon';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 
 
@@ -41,7 +42,7 @@ const Product = () => {
 
     return (
         <>
-        <Nav home={name} isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
+        <Nav home={name} isAddCart={true} isBack={true} actionBlock={<Link to='/cart'><CartIcon/></Link>}/>
         <div className='flex mt-14 mx-[10rem]'>
             <div >
                 <img src={imageUrl} alt="image" className='w-[30rem] h-[30rem]'/>
