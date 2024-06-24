@@ -7,6 +7,7 @@ import Nav from '../Nav'
 import useDebounce from '../../hooks/useDebounce';
 import AddToCartBtn from '../buttons/AddToCartBtn';
 import CartIcon from '../icons/CartIcon';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -33,15 +34,18 @@ const Products = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Smile Cart</title>
+            </Helmet>
             <Nav actionBlock={<div className='flex'>
                 <div className='relative'>
                     <input type="search" name="" id="" placeholder='Search Product'
-                     className='w-[15rem] h-[2rem] pl-6 border border-gray-600 rounded-lg'
-                     value={searchKey}
-                      onChange={event => setSearchKey(event.target.value)} />
+                        className='w-[15rem] h-[2rem] pl-6 border border-gray-600 rounded-lg'
+                        value={searchKey}
+                        onChange={event => setSearchKey(event.target.value)} />
                     <CiSearch className='absolute top-2 left-1' />
                 </div>
-                <Link to='/cart'><CartIcon/></Link>
+                <Link to='/cart'><CartIcon /></Link>
             </div>} />
 
             <section className='grid grid-cols-4 mx-7 mb-7'>
@@ -53,15 +57,15 @@ const Products = () => {
                             <p className="text-center pt-2 font-semibold">MRP:{item.mrp}</p>
                             <p className="text-center pt-2 font-semibold">Offer Price:{item.offer_price}</p>
                             <p className="text-center pt-2 font-semibold">Available Quantity:{item.available_quantity}</p>
-                            <AddToCartBtn slug={item.slug} availableQuantity={item.available_quantity}/>
+                            <AddToCartBtn slug={item.slug} availableQuantity={item.available_quantity} />
                         </div>
                     </Link>
                 })}
-                
-                
+
+
 
             </section>
-            {record.length===0 && <h1 className='text-[5rem] text-center mt-[15rem] font-bold'>NO DATA FOUND</h1>}
+            {record.length === 0 && <h1 className='text-[5rem] text-center mt-[15rem] font-bold'>NO DATA FOUND</h1>}
         </>
 
 

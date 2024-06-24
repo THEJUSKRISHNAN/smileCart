@@ -10,6 +10,7 @@ import ProductCard from './ProductCard'
 import { cartTotalOf } from '../utils'
 import { MRP, OFFER_PRICE } from '../constants'
 import PriceCard from './PriceCard'
+import { Helmet } from 'react-helmet'
 
 const Cart = () => {
     const [products, setProducts] = useState([]);
@@ -36,6 +37,9 @@ const Cart = () => {
   if (isEmpty(products)) {
     return (
       <> 
+      <Helmet>
+        <title>My cart</title>
+      </Helmet>
         <Nav  home='My cart' isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
         <div className="flex h-[85vh] items-center justify-center text-[5rem] font-bold">
           Your cart is empty!

@@ -6,6 +6,7 @@ import Nav from '../Nav';
 import AddToCartBtn from '../buttons/AddToCartBtn';
 import CartIcon from '../icons/CartIcon';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+import { Helmet } from 'react-helmet';
 
 
 
@@ -42,6 +43,9 @@ const Product = () => {
 
     return (
         <>
+        <Helmet>
+        <title>{name}</title>
+      </Helmet>
         <Nav home={name} isAddCart={true} isBack={true} actionBlock={<Link to='/cart'><CartIcon/></Link>}/>
         <div className='flex mt-14 mx-[10rem]'>
             <div >
