@@ -7,27 +7,17 @@ import AddToCartBtn from '../buttons/AddToCartBtn';
 import CartIcon from '../icons/CartIcon';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import { Helmet } from 'react-helmet';
+import { useShowProducts } from '../../hooks/reactQuery/useProductApi';
 
 
 
 const Product = () => {
     const { slug } = useParams();
-    const [product, setProduct] = useState({});
-    
-    useEffect(() => {
-      fetchProduct();
-    }, [])
     
 
-    const fetchProduct = async () => {
-        try {
-            const response = await productsApi.fetch(slug)
-            setProduct(response);
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    const {data: product={},isLoading,isError} = useShowProducts(slug)
 
+   
     const {
         name,
         description,

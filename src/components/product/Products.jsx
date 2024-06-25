@@ -8,29 +8,23 @@ import useDebounce from '../../hooks/useDebounce';
 import AddToCartBtn from '../buttons/AddToCartBtn';
 import CartIcon from '../icons/CartIcon';
 import { Helmet } from 'react-helmet';
+import { useFetchProducts } from '../../hooks/reactQuery/useProductApi';
 
 
 
 
 const Products = () => {
-    const [record, setRecord] = useState([])
     const [searchKey, setSearchKey] = useState("");
-
-
     const debouncedSearchKey = useDebounce(searchKey);
+    console.log(useFetchProducts(debouncedSearchKey))
 
-    useEffect(() => {
-        fetchProducts();
-    }, [debouncedSearchKey]);
+    const {data: {products = []}={},isLoading} = useFetchProducts(debouncedSearchKey)
+    console.log(products)
+    
 
-    const fetchProducts = async () => {
-        try {
-            const response = await AllProductsApi.showAllProducts(debouncedSearchKey);
-            setRecord(response.products)
-        } catch (error) {
-            console.log("An error occurred:", error);
-        }
-    };
+
+    
+
 
     return (
         <>
@@ -49,7 +43,7 @@ const Products = () => {
             </div>} />
 
             <section className='grid grid-cols-4 mx-7 mb-7'>
-                {record.map((item) => {
+                {products.map((item) => {
                     return <Link to={`product/${item.slug}`} className='mt-10 mx-5' key={item.name}>
                         <div className='border-2 border-black w-[15rem] rounded-xl h-[35rem] p-4' >
                             <img src={item.image_url} alt="" width={300} className='py-5 h-[15rem]' />
@@ -65,7 +59,7 @@ const Products = () => {
 
 
             </section>
-            {record.length === 0 && <h1 className='text-[5rem] text-center mt-[15rem] font-bold'>NO DATA FOUND</h1>}
+            {products.length === 0 && <h1 className='text-[5rem] text-center mt-[15rem] font-bold'>NO DATA FOUND</h1>}
         </>
 
 
