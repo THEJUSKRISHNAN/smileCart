@@ -1,7 +1,48 @@
 import React from 'react'
 import Nav from '../Nav';
 import { Formik, Field } from 'formik';
+import { useRef, useState } from "react";
+import { useCreateOrder } from '../../hooks/reactQuery/useCheckoutApi';
+import useCartItemsStore from '../../stores/useCartItemsStore';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
+
 const Checkout = () => {
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+  const history = useHistory();
+  
+
+  let clearCartData = useCartItemsStore(store=>store.clearCart);
+  const { mutate:createOrder} = useCreateOrder();
+
+  const redirectToHome=()=>{
+    clearCartData();
+    history.push('/Ordersuccess');
+   
+  }
+
+ 
+
+
+  const handleSubmit = values => {
+    setIsSubmitDisabled(true);
+
+    createOrder(
+      { payload: values },
+      {
+        onSuccess: () => {
+          console.log("sucess")
+          redirectToHome();
+          
+        },
+        onError: () => setIsSubmitDisabled(false),
+      }
+    );
+    
+  };
+
+
+
 
   const validate=values=>{
     const errors={};
@@ -12,6 +53,7 @@ const Checkout = () => {
       }
       return errors;
   }
+  
 
   return (
     <>
@@ -21,11 +63,9 @@ const Checkout = () => {
       <div className='grid justify-center'>
 
 
-        <Formik initialValues={{ Name: '', HouseName: '', PostOffice: '', LandMark: '', City: '', District: '', State: '', Email: '', PhoneNumber: '' }}
+        <Formik initialValues={{ Name: 'gs', HouseName: 'gs', PostOffice: 'sg', LandMark: 'sg', City: 'gs', District: 'sg', State: 'gs', Email: 'sg@12', PhoneNumber: '9999999999' }}
           validate={validate}
-          onSubmit={(values) => {
-            console.log(values)
-          }}
+          onSubmit={handleSubmit}
         >
 
           {(formik) => (
@@ -81,7 +121,7 @@ const Checkout = () => {
 
               </section>
               <div className='flex justify-center'>
-                <button type="submit" className='px-4 bg-blue-600 text-white font-semibold rounded-lg py-2 my-2'>Confirm order</button>
+                <button type="submit" className='px-4 bg-blue-600 text-white font-semibold rounded-lg py-2 my-2' disabled={isSubmitDisabled}>Confirm order</button>
               </div>
 
             </form>

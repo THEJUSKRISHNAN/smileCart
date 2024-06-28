@@ -5,6 +5,7 @@ import Product from "./components/product/Product"
 import Products from "./components/product/Products"
 import Cart from "./components/cart/Cart"
 import Checkout from "./components/checkout/Checkout"
+import Ordersuccess from "./components/checkout/Ordersuccess"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route component={Product} path='/product/:slug' />
         <Route component={Cart} path='/cart' />
         <Route exact component={Checkout} path='/checkout'/>
+        <Route component={Ordersuccess} path="/Ordersuccess"/>
         <Route component={PageNotFount} path="*" />
       </Switch>
 
