@@ -4,6 +4,7 @@ import PageNotFount from "./components/product/PageNotFount"
 import Product from "./components/product/Product"
 import Products from "./components/product/Products"
 import Cart from "./components/cart/Cart"
+import Checkout from "./components/checkout/Checkout"
 
 
 function App() {
@@ -13,16 +14,17 @@ function App() {
 
   return (
     <>
-     
+
       <Switch>
         <Route component={Products} path="/products" />
         <Redirect exact from="/" to="/products" />
         <Route component={Product} path='/product/:slug' />
-        <Route component={Cart} path='/cart'/>
+        <Route component={Cart} path='/cart' />
+        <Route exact component={Checkout} path='/checkout'/>
         <Route component={PageNotFount} path="*" />
       </Switch>
-      
-      
+
+
 
 
     </>

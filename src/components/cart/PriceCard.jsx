@@ -1,6 +1,7 @@
 import React from 'react'
 import { gt, keys } from "ramda";
 import useCartItemsStore from '../../stores/useCartItemsStore';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const PriceCard = ({ totalMrp, totalOfferPrice }) => {
@@ -17,7 +18,7 @@ const PriceCard = ({ totalMrp, totalOfferPrice }) => {
       {isDiscountPresent && (<div className='py-2'>
         <p className='pb-2 font-bold text-green-600'>Total discount:{totalDiscounts}({discountPercentage}%)</p>
       <p className='font-bold'>Total offerprice: ${totalOfferPrice}</p></div>)}
-      <button className='bg-blue-700 text-white font-bold py-1 px-3 rounded-md mt-2'>Buy now</button>
+      <Link className='bg-blue-700 text-white font-bold py-1 px-3 rounded-md mt-2' to={'/checkout'} >Buy now</Link>
     </div>
   
   )
