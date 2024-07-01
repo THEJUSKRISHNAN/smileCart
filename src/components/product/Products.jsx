@@ -43,12 +43,12 @@ const Products = () => {
                 <Link to='/cart'><CartIcon /></Link>
             </div>} />
 
-            <section className='grid grid-cols-4 mx-7 mb-7'>
+            <section className='flex justify-center flex-wrap gap-8 mb-7 pt-[5rem]  max-sm:grid-cols-1  '>
                 {products.map((item) => {
-                    return <Link to={`product/${item.slug}`} className='mt-10 mx-5' key={item.name}>
+                    return <Link to={`product/${item.slug}`} className='mt-10 ' key={item.name}>
                         <div className='border-2 border-black w-[15rem] rounded-xl h-[35rem] p-4' >
                             <img src={item.image_url} alt="" width={300} className='py-5 h-[15rem]' />
-                            <h1 href="#" className='font-bold text-center text-xl hover:cursor-pointer'>{item.name}</h1>
+                            <h1 href="#" className='font-bold text-center text-xl hover:cursor-pointer h-[5rem] overflow-hidden'>{item.name}</h1>
                             <p className="text-center pt-2 font-semibold">MRP:{item.mrp}</p>
                             <p className="text-center pt-2 font-semibold">Offer Price:{item.offer_price}</p>
                             <p className="text-center pt-2 font-semibold">Available Quantity:{item.available_quantity}</p>

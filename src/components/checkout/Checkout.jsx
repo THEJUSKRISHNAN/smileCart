@@ -60,7 +60,7 @@ const Checkout = () => {
       </Helmet>
       <Nav home="CHECKOUT" isBack="true" />
 
-      <div className='grid justify-center'>
+      <div className='grid justify-center pt-[10rem]'>
 
 
         <Formik initialValues={{ Name: '', HouseName: '', PostOffice: '', LandMark: '', City: '', District: '', State: '', Email: '', PhoneNumber: '' }}
@@ -71,7 +71,7 @@ const Checkout = () => {
           {(formik) => (
 
             <form onSubmit={formik.handleSubmit}>
-              <section>
+              <section className='max-sm:w-[25rem]'>
 
                 <div>
                   <h1 className='font-bold text-[4rem] underline'>Shipping Address</h1>

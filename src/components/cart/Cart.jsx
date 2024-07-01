@@ -65,7 +65,7 @@ const Cart = () => {
         <title>My cart</title>
       </Helmet>
     <Nav  home='My cart' isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
-    <div className='flex justify-evenly'>
+    <div className='flex justify-evenly pt-[10rem]'>
       
       <div className='ml-10'>
       {products.map(product => (
