@@ -50,7 +50,7 @@ const Product = () => {
                 <p className='mt-3 text-xl font-semibold text-green-600'>{discountPercentage}% off</p>
                 <div className='flex'>
                     <AddToCartBtn slug={slug} availableQuantity={availableQuantity} />
-                    <Link className='bg-blue-700 text-white font-bold rounded-md ml-3 h-[2.7rem] px-3 mt-3 pt-2.5' to={'/checkout'} >Buy now</Link>
+                    {availableQuantity>0 ? <Link className='bg-blue-700 text-white font-bold rounded-md ml-3 h-[2.7rem] px-3 mt-3 pt-2.5' to={'/checkout'} >Buy now</Link>: null}
                 </div>
             </div>
 

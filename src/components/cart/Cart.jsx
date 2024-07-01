@@ -19,7 +19,7 @@ const Cart = () => {
     const slugs = useCartItemsStore(store => keys(store.cartItems), shallow);
     const { cartItems, setSelectedQuantity } = useCartItemsStore();
 
-    console.log(cartItems);
+
   const fetchCartProducts = async () => {
     try {
       const responses = await Promise.all(
