@@ -8,6 +8,7 @@ import CartIcon from '../icons/CartIcon';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 import { Helmet } from 'react-helmet';
 import { useShowProducts } from '../../hooks/reactQuery/useProductApi';
+import Loader from '../Loader';
 
 
 
@@ -16,7 +17,7 @@ const Product = () => {
     
 
     const {data: product={},isLoading,isError} = useShowProducts(slug)
-
+        if(isLoading) return <Loader/>
    
     const {
         name,

@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { useCreateOrder } from '../../hooks/reactQuery/useCheckoutApi';
 import useCartItemsStore from '../../stores/useCartItemsStore';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
+import { Helmet } from 'react-helmet'
 
 const Checkout = () => {
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
@@ -31,7 +31,6 @@ const Checkout = () => {
       { payload: values },
       {
         onSuccess: () => {
-          console.log("sucess")
           redirectToHome();
           
         },
@@ -46,7 +45,6 @@ const Checkout = () => {
 
   const validate=values=>{
     const errors={};
-    console.log(String(values.PhoneNumber).length);
     if(String(values.PhoneNumber).length<10 || String(values.PhoneNumber).length>10)
       {
         errors.PhoneNumber="PhoneNumber must be in 10 digit"
@@ -57,7 +55,9 @@ const Checkout = () => {
 
   return (
     <>
-
+      <Helmet>
+        <title>Checkout</title>
+      </Helmet>
       <Nav home="CHECKOUT" isBack="true" />
 
       <div className='grid justify-center'>

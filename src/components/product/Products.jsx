@@ -9,6 +9,7 @@ import AddToCartBtn from '../buttons/AddToCartBtn';
 import CartIcon from '../icons/CartIcon';
 import { Helmet } from 'react-helmet';
 import { useFetchProducts } from '../../hooks/reactQuery/useProductApi';
+import Loader from '../Loader';
 
 
 
@@ -16,10 +17,10 @@ import { useFetchProducts } from '../../hooks/reactQuery/useProductApi';
 const Products = () => {
     const [searchKey, setSearchKey] = useState("");
     const debouncedSearchKey = useDebounce(searchKey);
-    console.log(useFetchProducts(debouncedSearchKey))
+    
 
     const {data: {products = []}={},isLoading} = useFetchProducts(debouncedSearchKey)
-    console.log(products)
+    if(isLoading) return <Loader/>
     
 
 

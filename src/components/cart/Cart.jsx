@@ -11,35 +11,41 @@ import { cartTotalOf } from '../utils'
 import { MRP, OFFER_PRICE } from '../constants'
 import PriceCard from './PriceCard'
 import { Helmet } from 'react-helmet'
+import Loader from '../Loader'
 
 const Cart = () => {
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
     const slugs = useCartItemsStore(store => keys(store.cartItems), shallow);
     const { cartItems, setSelectedQuantity } = useCartItemsStore();
 
+    console.log(cartItems);
   const fetchCartProducts = async () => {
     try {
       const responses = await Promise.all(
         slugs.map(slug => productsApi.fetch(slug))
       );
-
+      setIsLoading(true);
       setProducts(responses);
-      console.log(responses);
+      
     } catch (error) {
       console.log("An error occurred:", error);
     }
   };
 
+  
+
+
+
   useEffect(() => {
     fetchCartProducts();
   }, [cartItems]);
-
+  
+  if(!isLoading) return <Loader/>
   if (isEmpty(products)) {
     return (
       <> 
-      <Helmet>
-        <title>My cart</title>
-      </Helmet>
+      
         <Nav  home='My cart' isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
         <div className="flex h-[85vh] items-center justify-center text-[5rem] font-bold">
           Your cart is empty!
@@ -50,9 +56,14 @@ const Cart = () => {
 
   const totalMrp = cartTotalOf(products,MRP);
   const totalOfferPrice = cartTotalOf(products,OFFER_PRICE);
+
+  
   
   return (
     <>
+    <Helmet>
+        <title>My cart</title>
+      </Helmet>
     <Nav  home='My cart' isAddCart={true} isBack={true} actionBlock={<CartIcon/>}/>
     <div className='flex justify-evenly'>
       
