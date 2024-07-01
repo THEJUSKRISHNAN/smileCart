@@ -63,7 +63,7 @@ const Checkout = () => {
       <div className='grid justify-center'>
 
 
-        <Formik initialValues={{ Name: 'gs', HouseName: 'gs', PostOffice: 'sg', LandMark: 'sg', City: 'gs', District: 'sg', State: 'gs', Email: 'sg@12', PhoneNumber: '9999999999' }}
+        <Formik initialValues={{ Name: '', HouseName: '', PostOffice: '', LandMark: '', City: '', District: '', State: '', Email: '', PhoneNumber: '' }}
           validate={validate}
           onSubmit={handleSubmit}
         >
