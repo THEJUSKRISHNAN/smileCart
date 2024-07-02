@@ -41,14 +41,14 @@ const Product = () => {
             <div className='grid justify-center h-screen w-screen items-center'>
                 <div className='flex max-sm:flex-col max-sm:pt-[10rem] max-sm:justify-center'>
                     <div>
-                        <img src={imageUrl} alt="image" className='w-[30rem] h-[30rem] ml-[10rem]' />
+                        <img src={imageUrl} alt="image" className='w-[30rem] h-[30rem] ml-[10rem] max-sm:w-[20rem] max-sm:h-[20rem] max-sm:ml-0' />
                     </div>
-                    <div className='ml-[8rem] mt-[3rem] w-[40rem]'>
-                        <h1 className='text-[3rem] font-bold'>{name}</h1>
-                        <p className='mt-3 text-xl font-semibold'>{description}</p>
-                        <p className='mt-3 text-xl font-semibold'>MRP: {mrp}$</p>
-                        <p className='mt-3 text-xl font-semibold'>OFFER PRICE: {offerPrice}$</p>
-                        <p className='mt-3 text-xl font-semibold text-green-600'>{discountPercentage}% off</p>
+                    <div className='ml-[8rem] mt-[3rem] w-[40rem]  max-sm:w-[20rem] max-sm:ml-0'>
+                        <h1 className='text-[3rem] font-bold max-sm:text-[2rem]'>{name}</h1>
+                        <p className='mt-3 text-xl font-semibold max-sm:text-[1rem]'>{description}</p>
+                        <p className='mt-3 text-xl font-semibold max-sm:text-[1rem]'>MRP: {mrp}$</p>
+                        <p className='mt-3 text-xl font-semibold max-sm:text-[1rem]'>OFFER PRICE: {offerPrice}$</p>
+                        <p className='mt-3 text-xl font-semibold text-green-600 max-sm:text-[1rem]'>{discountPercentage}% off</p>
                         <div className='flex justify-center'>
                             <AddToCartBtn slug={slug} availableQuantity={availableQuantity} />
                             {availableQuantity > 0 ? <Link className='bg-blue-700 text-white font-bold rounded-md ml-3 h-[2.7rem] px-3 mt-3 pt-2.5' to={'/checkout'} >Buy now</Link> : null}
